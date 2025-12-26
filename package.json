@@ -38,14 +38,17 @@
   "exports": {
     ".": {
       "import": "./dist/index.js",
+      "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
     "./types/account": {
       "import": "./dist/types/account.js",
+      "require": "./dist/types/account.js",
       "types": "./dist/types/account.d.ts"
     },
     "./types/address": {
       "import": "./dist/types/address.js",
+      "require": "./dist/types/address.js",
       "types": "./dist/types/address.d.ts"
     }
   },
