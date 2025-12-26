@@ -51,10 +51,15 @@
       "require": "./dist/types/address.js",
       "types": "./dist/types/address.d.ts"
     },
-    "./dist/utils": {
+    "./utils": {
       "import": "./dist/utils.js",
       "require": "./dist/utils.js",
       "types": "./dist/utils.d.ts"
+    },
+    "./cli": {
+      "import": "./dist/cli/index.js",
+      "require": "./dist/cli/index.js",
+      "types": "./dist/cli/index.d.ts"
     }
   },
   "private": true
