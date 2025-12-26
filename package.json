@@ -52,9 +52,9 @@
       "types": "./dist/types/address.d.ts"
     },
     "./utils": {
-      "import": "./dist/utils.js",
-      "require": "./dist/utils.js",
-      "types": "./dist/utils.d.ts"
+      "import": "./dist/utils/index.js",
+      "require": "./dist/utils/index.js",
+      "types": "./dist/utils/index.d.ts"
     },
     "./cli": {
       "import": "./dist/cli/index.js",
