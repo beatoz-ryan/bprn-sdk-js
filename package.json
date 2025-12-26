@@ -50,6 +50,11 @@
       "import": "./dist/types/address.js",
       "require": "./dist/types/address.js",
       "types": "./dist/types/address.d.ts"
+    },
+    "./dist/utils": {
+      "import": "./dist/utils.js",
+      "require": "./dist/utils.js",
+      "types": "./dist/utils.d.ts"
     }
   },
   "private": true
