@@ -60,6 +60,11 @@
       "import": "./dist/cli/index.js",
       "require": "./dist/cli/index.js",
       "types": "./dist/cli/index.d.ts"
+    },
+    "./service": {
+      "import": "./dist/service/index.js",
+      "require": "./dist/service/index.js",
+      "types": "./dist/service/index.d.ts"
     }
   },
   "private": true
