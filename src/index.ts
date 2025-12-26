@@ -3,7 +3,7 @@
 export { Account } from "./types/account"
 export { generateChaincodeAddress } from "./types/address"
 
-export { Utils } from "./utils"
+export { Utils } from "./utils/utils"
 
 export { BpnProvider } from "./bpn-provider"
 export { BpnCliProvider } from "./bpn-cli-provider"

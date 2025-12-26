@@ -2,7 +2,7 @@
 
 import * as rlp from "rlp"
 import { EvmTransactionParam } from "../types/evm-transaction-param"
-import { bigIntParamToHex } from "../../utils"
+import { bigIntParamToHex } from "../../utils/utils"
 
 export class SigMsgGenerator {
 	createSigMsg2(chaincodeName: string, chaincodeFunction: string, chaincodeParams: string[], evmTxParam: EvmTransactionParam) {

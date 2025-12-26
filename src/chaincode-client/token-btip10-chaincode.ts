@@ -6,7 +6,7 @@ import { Account } from "../types/account"
 import { SigMsg } from "./generator/sig-msg"
 import { EvmTxParamGenerator } from "./generator/evm-tx-param-generator"
 import * as web3Account from "@beatoz/web3-accounts"
-import { bigIntParamToHex } from "../utils"
+import { bigIntParamToHex } from "../utils/utils"
 import { ContractEvent } from "fabric-network/lib/events"
 import logger from "../logger"
 
