@@ -41,9 +41,7 @@ export class Btip10TokenChaincode extends Erc20ChaincodeV2 {
 	init(cliInvoker: CliChaincodeInvoker, ownerAccount: Account, name: string, symbol: string, decimals: string, totalSupply: string) {
 		const methodName = "InitLedger"
 		const args = ["", name, symbol, decimals, totalSupply]
-		const sigMsg =
-			new SigMsg(
-				this.chaincodeName(), methodName, args).serialize()
+		const sigMsg = new SigMsg(this.chaincodeName(), methodName, args).serialize()
 		args[0] = web3Account.sign(sigMsg, ownerAccount.privateKey).toHex()
 
 		return cliInvoker.invoke(this.channelName, this.chaincodeName(), methodName, args, true)
@@ -109,6 +107,10 @@ export class Btip10TokenChaincode extends Erc20ChaincodeV2 {
 	async forceFlushInboundMessages(fromAccount: Account, fromChainId: string, fromDAppAddr: string, from: string, newMidx: string) {
 		return await this.invokeWithSig(fromAccount, "ForceFlushInboundMessages", ["", fromChainId, fromDAppAddr, from, newMidx, "false"])
 	}
+
+    async crossChainTest(dAppChaincodeName: string, dAppOwnerAddr: Account) {
+      return await this.invoke( "CrossChainTest", [dAppChaincodeName, dAppOwnerAddr.address])
+    }
 
 	async getChainId(): Promise<string> {
 		const chainId = await this.query("GetChainId", [])
