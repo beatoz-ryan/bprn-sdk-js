@@ -56,7 +56,7 @@ export class LinkerEndpointChaincode {
 	}
 
 	async registerDApp(fromAccount: Account, dAppOwner: string) {
-		const payload = await this.invoke(fromAccount, "RegisterDApp", [dAppOwner])
+		const payload = await this.invoke( "RegisterDApp", [dAppOwner])
 		console.log("registerDApp response payload", payload)
 
 		return {
@@ -76,28 +76,32 @@ export class LinkerEndpointChaincode {
 	}
 
 	async addDAppChannel(fromAccount: Account, dAppChaincodeName: string, toChainId: string, toDAppContractAddress: string) {
-		const payload = await this.invoke(fromAccount,"AddDAppChannel", [dAppChaincodeName, toChainId, toDAppContractAddress])
+		const payload = await this.invoke("AddDAppChannel", [dAppChaincodeName, toChainId, toDAppContractAddress])
 	}
 
 	async getChannelId(fromAccount: Account, dAppChaincodeName: string, toChainId: string, toDAppContractAddress: string) {
-		const dAppChannelId = await this.invoke(fromAccount,"GetChannelId", [dAppChaincodeName, toChainId, toDAppContractAddress])
+		const dAppChannelId = await this.invoke("GetChannelId", [dAppChaincodeName, toChainId, toDAppContractAddress])
 		return dAppChannelId
 	}
 
 	async dAppChannelCount(fromAccount: Account, dAppChaincodeName: string) {
-		const dAppChannelCount = await this.invoke(fromAccount,"DappChannelCount", [dAppChaincodeName])
+		const dAppChannelCount = await this.invoke("DappChannelCount", [dAppChaincodeName])
 		return dAppChannelCount
 	}
 
 	async inboundMidxs(signer: Account, dAppAddress: string, linkerChannelIdentity: string, fromChainId: string, fromDAppAddress: string, toAccount: string, fromAccount: string) {
-		const inboundMidx = await this.invoke(signer,"InboundMidxs", [dAppAddress, linkerChannelIdentity, fromChainId, fromDAppAddress, toAccount, fromAccount])
+		const inboundMidx = await this.invoke("InboundMidxs", [dAppAddress, linkerChannelIdentity, fromChainId, fromDAppAddress, toAccount, fromAccount])
 		return inboundMidx
 	}
 
 	async outboundMidxs(signer: Account, dAppAddress: string, linkerChannelIdentity: string, toChainId: string, toDAppAddress: string, fromAccount: string, toAccount: string) {
-		const outboundMidx = await this.invoke(signer,"OutboundMidxs", [dAppAddress, linkerChannelIdentity, toChainId, toDAppAddress, fromAccount, toAccount])
+		const outboundMidx = await this.invoke("OutboundMidxs", [dAppAddress, linkerChannelIdentity, toChainId, toDAppAddress, fromAccount, toAccount])
 		return outboundMidx
 	}
+
+    async crossChainTest(dAppChaincodeName: string, dAppOwnerAddr: Account) {
+      return await this.invoke( "CrossChainTest", [dAppChaincodeName, dAppOwnerAddr.address])
+    }
 
 	async addEventListeners() {
 		await this.chaincode.contract.addContractListener(this.chaincodeEventListener)
@@ -123,7 +127,7 @@ export class LinkerEndpointChaincode {
 		return result.query
 	}
 
-	async invoke(signer: Account, functionName: string, args: string[]): Promise<any> {
+	async invoke(functionName: string, args: string[]): Promise<any> {
 		//const erc20Args = await this.erc20ArgsCreator.createArgs(signer, this.chaincode, functionName, args)
 		// const sigMsg = new SigMsg(
 		// 	new EvmTxParamGenerator().createEvmTxParam(1, 0),
