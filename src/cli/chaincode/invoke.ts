@@ -1,7 +1,7 @@
 /** @format */
 
 import { FlagBuilder } from "../lifecycle/flag/flag-builder"
-import { OrdererInfo, PeerInfo } from "../../bpn-network/info/network-info/network-info"
+import { OrdererInfo, PeerInfo } from "../../bpn-network"
 import { Chaincode } from "../chaincode"
 
 export class Invoke {

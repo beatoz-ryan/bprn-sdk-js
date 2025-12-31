@@ -3,7 +3,7 @@
 import { CliChaincodeDeployService } from "./cli-chaincode-deploy-service"
 import { InvokeParam } from "../cli/chaincode/invoke"
 import { CliChaincodeInvokeService } from "./cli-chaincode-invoke-service"
-import { PackagingMode } from "../cli/cli-chaincode-deployer"
+import { PackagingMode } from "../cli"
 
 export class CliChaincodeDeployInitService {
 	readonly cliChaincodeDeployService: CliChaincodeDeployService
