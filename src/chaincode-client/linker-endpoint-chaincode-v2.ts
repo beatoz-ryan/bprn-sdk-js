@@ -87,7 +87,7 @@ export class LinkerEndpointChaincodeV2 extends Chaincode {
 		return inboundMidx
 	}
 
-	async outboundMidxs(signer: Account, dAppAddress: string, linkerChannelIdentity: string, toChainId: string, toDAppAddress: string, fromAccount: string, toAccount: string) {
+	async outboundMidxs(dAppAddress: string, linkerChannelIdentity: string, toChainId: string, toDAppAddress: string, fromAccount: string, toAccount: string) {
 		const outboundMidx = await this.query("OutboundMidxs", [dAppAddress, linkerChannelIdentity, toChainId, toDAppAddress, fromAccount, toAccount])
 		return outboundMidx
 	}
