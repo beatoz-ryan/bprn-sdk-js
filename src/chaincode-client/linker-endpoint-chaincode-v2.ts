@@ -72,25 +72,33 @@ export class LinkerEndpointChaincodeV2 extends Chaincode {
 		const payload = await this.invokeWithSig(fromAccount, "AddDAppChannel", ["", dAppChaincodeName, toChainId, toDAppContractAddress])
 	}
 
-	async getChannelId(fromAccount: Account, dAppChaincodeName: string, toChainId: string, toDAppContractAddress: string) {
-		const dAppChannelId = await this.invoke("GetChannelId", [dAppChaincodeName, toChainId, toDAppContractAddress])
+	async getChannelId(dAppChaincodeName: string, toChainId: string, toDAppContractAddress: string) {
+		const dAppChannelId = await this.query("GetChannelId", [dAppChaincodeName, toChainId, toDAppContractAddress])
 		return dAppChannelId
 	}
 
 	async dAppChannelCount(fromAccount: Account, dAppChaincodeName: string) {
-		const dAppChannelCount = await this.invoke("DappChannelCount", [dAppChaincodeName])
+		const dAppChannelCount = await this.query("DappChannelCount", [dAppChaincodeName])
 		return dAppChannelCount
 	}
 
-	async inboundMidxs(signer: Account, dAppAddress: string, linkerChannelIdentity: string, fromChainId: string, fromDAppAddress: string, toAccount: string, fromAccount: string) {
-		const inboundMidx = await this.invoke("InboundMidxs", [dAppAddress, linkerChannelIdentity, fromChainId, fromDAppAddress, toAccount, fromAccount])
+	async inboundMidxs(dAppAddress: string, linkerChannelIdentity: string, fromChainId: string, fromDAppAddress: string, toAccount: string, fromAccount: string) {
+		const inboundMidx = await this.query("InboundMidxs", [dAppAddress, linkerChannelIdentity, fromChainId, fromDAppAddress, toAccount, fromAccount])
 		return inboundMidx
 	}
 
 	async outboundMidxs(signer: Account, dAppAddress: string, linkerChannelIdentity: string, toChainId: string, toDAppAddress: string, fromAccount: string, toAccount: string) {
-		const outboundMidx = await this.invoke("OutboundMidxs", [dAppAddress, linkerChannelIdentity, toChainId, toDAppAddress, fromAccount, toAccount])
+		const outboundMidx = await this.query("OutboundMidxs", [dAppAddress, linkerChannelIdentity, toChainId, toDAppAddress, fromAccount, toAccount])
 		return outboundMidx
 	}
+
+    async linkerChannels(dAppAddress: string) {
+      return await this.query("LinkerChannels", [dAppAddress])
+    }
+
+    async linkerVerifiers(dAppAddress: string) {
+      return await this.query("LinkerVerifiers", [dAppAddress])
+    }
 
     async crossChainTest(dAppChaincodeName: string, dAppOwnerAddr: Account) {
       return await this.invoke( "CrossChainTest", [dAppChaincodeName, dAppOwnerAddr.address])

@@ -112,6 +112,10 @@ export class Btip10TokenChaincode extends Erc20ChaincodeV2 {
       return await this.invoke("CrossChainTest", [dAppChaincodeName, dAppOwnerAddr.address])
     }
 
+  async Test02(data: string,) {
+    return await this.invoke("Test02", [data])
+  }
+
 	async getChainId(): Promise<string> {
 		const chainId = await this.query("GetChainId", [])
 		return chainId as string
